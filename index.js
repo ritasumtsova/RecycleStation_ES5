@@ -16,29 +16,41 @@ var user = new User('+380939009090')
 
 //var recycleShopContext = recycleShop.addGoodsAsync.bind(recycleShop);
 // 1
-recycleShop.addGoodsAsync('async table 1', function (goods) {
-    this.__goods.push(goods);
-    console.log(this.getGoods());
-    recycleShop.addGoodsAsync('async table 2', function (goods) {
-        this.__goods.push(goods);
-        console.log(this.getGoods());
-        recycleShop.addGoodsAsync('async table 3', function (goods) {
-            this.__goods.push(goods);
-            console.log(this.getGoods());
-        }.bind(recycleShop))
-    }.bind(recycleShop))
-}.bind(recycleShop));
+// recycleShop.addGoodsAsync('async table 1', function (goods) {
+//     this.__goods.push(goods);
+//     console.log(this.getGoods());
+//     recycleShop.addGoodsAsync('async table 2', function (goods) {
+//         this.__goods.push(goods);
+//         console.log(this.getGoods());
+//         recycleShop.addGoodsAsync('async table 3', function (goods) {
+//             this.__goods.push(goods);
+//             console.log(this.getGoods());
+//         }.bind(recycleShop))
+//     }.bind(recycleShop))
+// }.bind(recycleShop));
 
 // 2
-// recycleShop.addGoodsAsync('async table 1', function () {
-//     console.log(this.getGoods())
-//     recycleShop.addGoodsAsync('async table 2', function () {
-//         console.log(this.getGoods())
-//         recycleShop.addGoodsAsync('async table 3', function () {
-//             console.log(this.getGoods())
-//           }.bind(recycleShop));
-//       }.bind(recycleShop));
-//   }.bind(recycleShop));
+recycleShop.addGoodsAsync('async table 1', function (error, data) {
+    if (error) {
+        console.error(error);
+    } else {
+        console.log(data);
+    }
+    recycleShop.addGoodsAsync('async table 2', function (error, data) {
+        if (error) {
+            console.error(error);
+        } else {
+            console.log(data);
+        }
+        recycleShop.addGoodsAsync('async table 3', function (error, data) {
+            if (error) {
+                console.error(error);
+            } else {
+                console.log(data);
+            }
+          });
+      });
+  });
 
 
 

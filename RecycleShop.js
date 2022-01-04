@@ -22,24 +22,33 @@ RecycleShop.prototype.addGoods = function (goods) {
 };
 
 // 1
-RecycleShop.prototype.addGoodsAsync = function (goods, callback) {
-    setTimeout(
-        function () {
-            callback(goods);
-        },
-        5000
-    );
-};
-
-// 2
 // RecycleShop.prototype.addGoodsAsync = function (goods, callback) {
 //     setTimeout(
-//       function () {
-//         this.__goods.push(goods);
-//         callback();
-//       }.bind(this), 5000
+//         function () {
+//             callback(goods);
+//         },
+//         5000
 //     );
-//   };
+// };
+
+// 2
+RecycleShop.prototype.addGoodsAsync = function (goods, callback) {
+    setTimeout(
+      function () {
+        var error;
+        var data;
+
+        if (this.__goods.length < 3) {
+            this.__goods.push(goods);
+            data = this.getGoods();
+        } else {
+            error = new Error('The storage is full')
+        }
+
+        callback(error, data);
+      }.bind(this), 5000
+    );
+  };
   
 
 RecycleShop.prototype.buyGoods = function (goods) {
