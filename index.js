@@ -35,21 +35,21 @@ recycleShop.addGoodsAsync('async table 1', function (error, data) {
         console.error(error);
     } else {
         console.log(data);
-    }
-    recycleShop.addGoodsAsync('async table 2', function (error, data) {
-        if (error) {
-            console.error(error);
-        } else {
-            console.log(data);
-        }
-        recycleShop.addGoodsAsync('async table 3', function (error, data) {
+        recycleShop.addGoodsAsync('async table 2', function (error, data) {
             if (error) {
                 console.error(error);
             } else {
                 console.log(data);
+                recycleShop.addGoodsAsync('async table 3', function (error, data) {
+                    if (error) {
+                        console.error(error);
+                    } else {
+                        console.log(data);
+                    }
+                });
             }
-          });
-      });
+        });
+    }
   });
 
 
