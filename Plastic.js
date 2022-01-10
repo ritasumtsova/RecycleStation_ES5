@@ -1,8 +1,8 @@
 'use strict';
 
-function Plastic(name, recyclingCount, weight, color) {
+function Plastic(name, recyclingCount, color) {
     Recycle.call(this, name, recyclingCount);
-    this.__weight = weight;
+    this.__weight = 0;
     this.__color = color;
 }
 

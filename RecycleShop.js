@@ -21,17 +21,6 @@ RecycleShop.prototype.addGoods = function (goods) {
     this.__goods.push(goods);
 };
 
-// 1
-// RecycleShop.prototype.addGoodsAsync = function (goods, callback) {
-//     setTimeout(
-//         function () {
-//             callback(goods);
-//         },
-//         5000
-//     );
-// };
-
-// 2
 RecycleShop.prototype.addGoodsAsync = function (goods, callback) {
     setTimeout(
       function () {

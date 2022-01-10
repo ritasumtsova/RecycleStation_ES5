@@ -29,12 +29,14 @@ User.prototype.getGoods = function () {
     return this.__goods;
 };
 
-User.prototype.setRecycleShop = function (recycleShop) {
-    this.__recycleShop = recycleShop;
-};
+User.prototype.buyGoods = function (goods) {
+    var good = this.__recycleShop.buyGoods(goods);
 
-User.prototype.setRecycleStation = function (recycleStation) {
-    this.__recycleStation = recycleStation;
+    if (good) {
+        this.__goods.push(good);
+    }
+
+    return good;
 };
 
 User.prototype.getRecycles = function () {
@@ -65,12 +67,10 @@ User.prototype.giveRecycle = function () {
     }
 };
 
-User.prototype.buyGoods = function (goods) {
-    var good = this.__recycleShop.buyGoods(goods);
+User.prototype.setRecycleStation = function (recycleStation) {
+    this.__recycleStation = recycleStation;
+};
 
-    if (good) {
-        this.__goods.push(good);
-    }
-
-    return good;
+User.prototype.setRecycleShop = function (recycleShop) {
+    this.__recycleShop = recycleShop;
 };
