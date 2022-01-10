@@ -50,25 +50,29 @@ RecycleStation.prototype.setRecycleShop = function (recycleShop) {
 };
 
 RecycleStation.prototype.makeGoods = function () {
-        this.__recycles.forEach(function (recycle) {
-            switch (recycle.getName().toLowerCase()) {
-                case 'plastic':
-                    if (recycle.getRecyclingCount() < 4) {
-                        this.__recycleShop.addGoods('clothes' + this.__recycles.indexOf(recycle));
-                    };
+        if (this.__recycles.length > 0) {
+            this.__recycles.forEach(function (recycle) {
+                switch (recycle.getName().toLowerCase()) {
+                    case 'plastic':
+                        if (recycle.getRecyclingCount() < 4) {
+                            this.__recycleShop.addGoods('clothes' + this.__recycles.indexOf(recycle));
+                        };
+                        break;
+                    case 'glass':
+                        this.__recycleShop.addGoods('tableware' + this.__recycles.indexOf(recycle));
+                        break;
+                    case 'paper':
+                        if (recycle.getRecyclingCount() < 7) {
+                            this.__recycleShop.addGoods('notebook' + this.__recycles.indexOf(recycle));
+                        };
                     break;
-                case 'glass':
-                    this.__recycleShop.addGoods('tableware' + this.__recycles.indexOf(recycle));
-                    break;
-                case 'paper':
-                    if (recycle.getRecyclingCount() < 7) {
-                        this.__recycleShop.addGoods('notebook' + this.__recycles.indexOf(recycle));
-                    };
-                break;
-                default: 
-                    return recycle.getColor() +  ' ' + recycle.getName() + ' cannot be recycle. Burn it.';
-            };
-        }.bind(this));
-    
-        this.__recycles = [];
+                    default: 
+                        return recycle.getColor() +  ' ' + recycle.getName() + ' cannot be recycle. Burn it.';
+                };
+            }.bind(this));
+
+            this.__recycles = [];
+        } else {
+            return 'Recycle station has no recycles to make the goods.';
+        }
 };
