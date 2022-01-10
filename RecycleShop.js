@@ -35,7 +35,7 @@ RecycleShop.prototype.addGoodsAsync = function (goods, callback) {
         }
 
         callback(error, data);
-      }.bind(this), 5000
+      }.bind(this), 3000
     );
   };
   
